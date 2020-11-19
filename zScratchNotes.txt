@@ -7,11 +7,11 @@
 BACKEND
 
     in CONTROLLERS
-        DeckController.js
+        DeckController.js /\PSEUDOCODE/\ /\REVIEW/\
 
-        MTGCardController.js
+        MTGCardController.js /\PSEUDOCODE/\ /\REVIEW/\
 
-        UserController.js
+        UserController.js /\DONE/\
 
     in DATABASE
         connection.js
@@ -45,9 +45,9 @@ BACKEND
 
 
     in MIDDLEWARE
-        JwtHandler.js
+        JwtHandler.js /\DONE/\
         
-        PasswordHandler.js
+        PasswordHandler.js /\DONE/\
 
     in ROUTES
         AppRouter.js UNCHANGED
