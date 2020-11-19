@@ -21,8 +21,8 @@ BACKEND
         seed.js
             my seed might not be required, but could be useful in testing stuff out
 
-        MODELS
-            Deck.js
+        MODELS /\DONE/\
+            Deck.js /\DONE/\
                 has a required name
                 has an unrequired description
                 has MTGCardIds-
@@ -30,11 +30,11 @@ BACKEND
                     ref 'MTGCard'
 
 
-            MTGCard.js
+            MTGCard.js /\DONE/\
                 has a required title
                 has a required image source
 
-            User.js
+            User.js /\DONE/\
                 has a required name
                 has a required, unique, indexed email
                 has a required password_digest
