@@ -1,0 +1,249 @@
+
+╦  ┌─┐┌┬┐┌─┐  ┌─┐┬ ┬┌─┐┬┌─┬┌┐┌  ╔═╗╔═╗╔═╗╔═╗╔═╗
+║  ├┤  │ └─┐  ├┤ │ ││  ├┴┐││││  ║ ╦║ ║║ ║║ ║║ ║
+╩═╝└─┘ ┴ └─┘  └  └─┘└─┘┴ ┴┴┘└┘  ╚═╝╚═╝╚═╝╚═╝╚═╝
+
+
+BACKEND
+
+    in CONTROLLERS
+        DeckController.js
+
+        MTGCardController.js
+
+        UserController.js
+
+    in DATABASE
+        connection.js
+
+        schema.js
+        
+        seed.js
+            my seed might not be required, but could be useful in testing stuff out
+
+        MODELS
+            Deck.js
+                has a required name
+                has an unrequired description
+                has MTGCardIds-
+                    type: Schema.Types.ObjectId,
+                    ref 'MTGCard'
+
+
+            MTGCard.js
+                has a required title
+                has a required image source
+
+            User.js
+                has a required name
+                has a required, unique, indexed email
+                has a required password_digest
+                has an unrequired decks array
+                        of arrays of MTG Card MTGCardIds
+                    type: Schema.Types.ObjectId,
+                    ref: 'decks'
+
+
+    in MIDDLEWARE
+        JwtHandler.js
+        
+        PasswordHandler.js
+
+    in ROUTES
+        AppRouter.js UNCHANGED
+            this is the first point of contact to the backend
+            it requires all of the other routers to be strung up
+
+        *DeckRouter.js
+            this is where I put each of the routes for each function into the controller
+                .get GetAllDecks
+                .get GetSingleDeck
+                .post CreateDeck
+                .put UpdateDeck //names and description
+                .delete DeleteDeck
+                .put (StoreCard?)---> need that for GetSingleCard
+                .delete (RemoveCardFromDeck)
+
+        MTGCardRouter.js
+            all routes for card functions
+                GetSingleCard
+                GetAllCards
+                
+                
+
+        UserRouter.js
+            all routes for user functions
+                .get GetProfile
+                .post CreateUser
+                .post SignInUser (with createToken)
+            All of the token MIDDLEWARE
+            
+    server.js UNCHANGED
+        This is where we get all of our stuff working
+
+
+
+
+FRONTEND--->everything in SRC 
+
+    in SERVICES
+        all of my __Services 
+
+        ApiClient.js UNCHANGED
+            explains to the backend what to get
+                including token
+
+        DeckServices.js
+            __DeleteDeck (deckId)
+                .delete(`/decks/${deckId}?active=true`)
+                    call it in a button
+                    delete the deck from the user as well in a cascade
+
+            __UpdateDeckInfo (formData, deckId)
+                .put(`/decks/${deckId}?active=true`, formData)
+                    call it in a button
+
+            __CreateDeck (formData, userId) /\UNCHANGED/\
+                .post(`/decks/${userId}/?active=true`, formData)
+            
+            __StoreCardInDeck (cardId) /\BOSSBATTLE/\
+                this is a tricky one
+                    I need to ~.get~ the cardId from the ApiClient
+                    and ~.put~ it in the relevant deckId
+                store the path for the card in an object and then pass it along
+                const selectedCard = .get(`/mtgcards/${mtgcardId})
+                .put(`/decks/${deckId}/${selectedCard})
+                        I can store deckId in state with a dropdown
+
+
+            __GetAllDecks (page, limit)
+                .get(`/decks?page=${page || 1}&limit=${limit || 10}`)
+
+            __GetSingleDeck (deckId)
+                .get(`/decks/${deckId}`)
+
+            __DisplayDeckContents (deckId, userId)
+                .get(`/decks/${deckId}/${userId})
+                and then loop through the array there (.map()) and pop em all in Cards
+
+
+        MTGCardServices.js /\FILL OUT/\
+            __GetAllCards (page, limit)
+                similar to __GetAllDecks
+                .get(`/mtgcards?page=${page||1}&${limit || 50}`)
+                    -need to link this with the API somehow
+            __GetSingleCard
+
+            
+            
+
+
+        UserServices.js /\UNCHANGED/\
+            __GetProfile
+                takes in (userId) as a parameter
+                .get(`users/${userId})
+            __RegisterUser
+                takes in (formData) as a parameter
+                .post(`/users/register`, formData)
+            __CheckSession
+                no parameter
+                .get(`users/refresh/session`)
+            __LoginUser
+                takes in (userData) as a parameter
+                .post(`/users/login`, userData)
+                sets a token for localStorage
+            
+            
+
+    in COMPONENTS
+        Router.js
+            The grandaddy
+            this shit is gonna be loaded 
+            I gotta set state for everything to be a detail
+            and then use the bits throughout to adjust the state
+
+            componentDidMount() {
+                this.setState({
+                    pageloading: false,
+                    decks: this.currentUser.decks
+                    chosenDeck: deckId? no, I use the service function to get it
+                })
+            }
+
+        Hero.js /\UNCHANGED/\
+            super simple, it's just my welcome shit
+                can make it a ternary for when a user is logged in
+                    authenticated ? () : ()
+
+        Nav.js
+            just my nav bar
+            would be nice if it had a deck selector here
+                refer to stocks lab
+                    *stonks lab
+
+        TextInput /\UNCHANGED/\
+            super simple, just have this to use for forms and search
+
+        DisplayBoard /\UNCHANGED/\
+            Yeah this is the Card.js from th other one 
+                renamed for clarity's sake 
+
+    in PAGES (pages are also components)
+    All pages get a NavBar
+        LandingPage /\UNCHANGED/\
+            opening number
+            gonna have the Hero.js
+        Home /\MOSTLY UNCHANGED/\
+            The basic place where a user lands
+                not necessary, but could be good
+                Honestly could just be some basic bullshit about the project
+                and nothing else 
+        SignUp /\UNCHANGED/\
+            clone it from Lotus1
+        SignIn /\UNCHANGED/\
+            clone it from Lotus1
+        ViewAllDecks /\FIX/\
+            Needs to be able to also map through a user's decks and display them
+        CreateDeck /\UNCHANGED/\
+            clone it from Lotus1
+        ViewDeckContents 
+            similar to ViewAllCards but limit it to a deck
+        BrowseCards
+            .map() through array of cards and display the image in a DisplayBoard, in a div
+        
+
+    in STYLES
+        each of my .css sheets to then import to the relevant pages
+
+    App.js
+        JUST FIRE THAT SUCKAH OFF
+
+    index.js
+        ReactDOM renderfier
+
+
+THE BIG TODOS
+
+    RECREATE Functional Pieces of the Old project
+        tweak small adjustments in nomenclature
+
+    FIX
+        ViewAllDecks
+        UpdateDeckInfo
+
+    CREATE
+        StoreCardInDeck
+        RemoveCardFromDeck
+        A shitload of CSS
+
+    STRETCH
+        Link to API for card images/titles
+    
+response.data.name
+
+response.data.image_uris.large
+
+
+forEach(response.data.legalities.standard ==="legal")=> (
+
+)
