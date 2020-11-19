@@ -1,5 +1,5 @@
 //Review This one 
-
+//CANNIBALIZE CODE FROM MTGCARDCONTROLLER
 const express = require('express')
 const {Deck, MTGCard, User} = require('../database/schema')
 

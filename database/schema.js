@@ -7,4 +7,4 @@ const User = model('User', UserModel)
 const Deck = model('Deck', DeckModel)
 const MTGCard = model('MTGCard', MTGCardModel)
 
-module.exports = { User,Deck, MTGCard}
+module.exports = { User, Deck, MTGCard}

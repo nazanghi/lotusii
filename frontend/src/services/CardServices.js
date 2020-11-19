@@ -1,4 +1,6 @@
-// should look at the card component
+//I feel like this part is done
+
+
 import ApiClient from './ApiClient'
 
 export const __GetCards = async (page, limit) => {

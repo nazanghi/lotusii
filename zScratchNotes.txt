@@ -7,18 +7,21 @@
 BACKEND
 
     in CONTROLLERS
-        DeckController.js /\PSEUDOCODE/\ /\REVIEW/\
+        DeckController.js /\TODO/\
+            __AddCardToDeck
+            __RemoveCardFromDeck
 
-        MTGCardController.js /\PSEUDOCODE/\ /\REVIEW/\
+
+        MTGCardController.js /\DONE/\
 
         UserController.js /\DONE/\
 
     in DATABASE
-        connection.js
+        connection.js /\DONE/\
 
-        schema.js
+        schema.js /\DONE/\
         
-        seed.js
+        seed.js /\DONE/\
             my seed might not be required, but could be useful in testing stuff out
 
         MODELS /\DONE/\
@@ -44,17 +47,17 @@ BACKEND
                     ref: 'decks'
 
 
-    in MIDDLEWARE
+    in MIDDLEWARE /\DONE/\
         JwtHandler.js /\DONE/\
         
         PasswordHandler.js /\DONE/\
 
     in ROUTES
-        AppRouter.js UNCHANGED
+        AppRouter.js /\DONE/\
             this is the first point of contact to the backend
             it requires all of the other routers to be strung up
 
-        *DeckRouter.js
+        *DeckRouter.js /\TODO/\
             this is where I put each of the routes for each function into the controller
                 .get GetAllDecks
                 .get GetSingleDeck
@@ -64,21 +67,21 @@ BACKEND
                 .put (StoreCard?)---> need that for GetSingleCard
                 .delete (RemoveCardFromDeck)
 
-        MTGCardRouter.js
+        MTGCardRouter.js /\TODO/\
             all routes for card functions
                 GetSingleCard
                 GetAllCards
                 
                 
 
-        UserRouter.js
+        UserRouter.js /\DONE/\
             all routes for user functions
                 .get GetProfile
                 .post CreateUser
                 .post SignInUser (with createToken)
             All of the token MIDDLEWARE
             
-    server.js UNCHANGED
+    server.js /\DONE/\
         This is where we get all of our stuff working
 
 
@@ -89,11 +92,14 @@ FRONTEND--->everything in SRC
     in SERVICES
         all of my __Services 
 
-        ApiClient.js UNCHANGED
+        ApiClient.js /\DONE/\
             explains to the backend what to get
                 including token
 
-        DeckServices.js
+        DeckServices.js /\TODO/\
+                +__StoreCardInDeck
+                +__RemoveCardFromDeck
+
             __DeleteDeck (deckId)
                 .delete(`/decks/${deckId}?active=true`)
                     call it in a button
@@ -125,6 +131,10 @@ FRONTEND--->everything in SRC
             __DisplayDeckContents (deckId, userId)
                 .get(`/decks/${deckId}/${userId})
                 and then loop through the array there (.map()) and pop em all in Cards
+
+
+
+++++REVIEW PLACEHOLDER++++
 
 
         MTGCardServices.js /\FILL OUT/\
