@@ -39,21 +39,21 @@ export default class ViewAllDecks extends Component {
                 <h2>View Your Decks</h2>
                 <section className="content-wrapper">
                     {
-                        __GetDecks.map((deck) => (
-                            <DisplayBoard
-                                key={deck._id}
-                            >
-                                {/* the below div had a class of discover */}
-                                <div className="mask flex-col">
-                                    <div className ="flex-col">
-                                        <div className="card-content">
-                                            <h3>{deck.name}</h3>
-                                            <p>{deck.description}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </DisplayBoard>
-                        ))
+                        // // getDecks.map((deck) => (
+                        // //     <DisplayBoard
+                        // //         key={deck._id}
+                        // //     >
+                        // //         {/* the below div had a class of discover */}
+                        // //         <div className="mask flex-col">
+                        // //             <div className ="flex-col">
+                        // //                 <div className="card-content">
+                        // //                     <h3>{deck.name}</h3>
+                        // //                     <p>{deck.description}</p>
+                        // //                 </div>
+                        // //             </div>
+                        // //         </div>
+                        // //     </DisplayBoard>
+                        // ))
                     }
                 </section>
             </div>

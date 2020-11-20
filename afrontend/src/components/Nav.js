@@ -15,7 +15,7 @@ export default ({ authenticated,currentUser, className }) => {
                         View Your Decks
                 </NavLink>
                 <NavLink 
-                    activeClassName="nav-active" to="/Discover">
+                    activeClassName="nav-active" to="/mtgcards">
                         View All Cards
                 </NavLink>
                 <NavLink 

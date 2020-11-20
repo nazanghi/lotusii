@@ -9,6 +9,7 @@ import {__GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckSe
 import LandingPage from '../pages/LandingPage'
 import Home from '../pages/Home'
 import ViewAllDecks from '../pages/ViewAllDecks'
+import BrowseCards from '../pages/BrowseCards'
 
 class Router extends Component {
     constructor (){
@@ -113,6 +114,16 @@ class Router extends Component {
                                     currentUser={this.state.currentUser}
                                     addDeck={this.addDeck}
                                 />    
+                            )}
+                        />
+{/* ^^^^^^^^^^^^^^^^^       DECK ROUTES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+{/* vvvvvvvvvvvvvvvvvv      CARD ROUTES     vvvvvvvvvvvvvvvvvvvvvvvvv */}
+                        <Route
+                            path="/cards"
+                            component={(props)=> (
+                                <BrowseCards
+                                    {...props}
+                                />
                             )}
                         />
 
