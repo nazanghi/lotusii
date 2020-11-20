@@ -7,7 +7,7 @@
 BACKEND
 
     in CONTROLLERS
-        DeckController.js /\TODO/\
+        DeckController.js /\DONE/\
             __AddCardToDeck
             __RemoveCardFromDeck
 
@@ -261,11 +261,6 @@ forEach(response.data.legalities.standard ==="legal")=> (
 
 LIST OF FILES TO MAKE/EDIT
 
-    CONTROLLERS
-        DeckController.js
-
-    ROUTERS 
-        DeckRouter.js
     
     SERVICES
         DeckServices.js

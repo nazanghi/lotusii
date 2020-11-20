@@ -37,14 +37,6 @@ export const __UpdateDeckInfo = async (formData, deckId) => {
         return response.data
     } catch (error){throw error}
 }
-// export const __UpdateDecksCards = async (cardId, deckId) => {
-//     try {
-//         const foundCard = await ApiClient.get(`/mtgcards/${cardId}`)
-//         const response = await ApiClient.put(`/decks/${deckId}/${foundCard}`)
-//         console.log(response.data)
-//         return response.data
-//     } catch (error){throw error}
-// }
 
 export const __CreateDeck = async (formData, userId) => {
     try {
@@ -53,4 +45,29 @@ export const __CreateDeck = async (formData, userId) => {
     } catch (error){throw error}
 }
 
+export const __AddCardToDeck = async (deckId, cardId) => {
+    try {
+        const response = await ApiClient.put(`/${deckId}/${cardId}`)
+        return response.data
+    } catch(error){throw error}  
+}
+
+export const __RemoveCardFromDeck = async (deckId, cardId) => {
+    try {
+        const response = await ApiClient.delete(`/${deckId}/${cardId}`)
+    } catch(error){throw error}
+}
+
 // export const __AddCardToDeck = async (MTGCardId, deckId)
+
+
+
+
+    // export const __UpdateDecksCards = async (cardId, deckId) => {
+    //     try {
+    //         const foundCard = await ApiClient.get(`/mtgcards/${cardId}`)
+    //         const response = await ApiClient.put(`/decks/${deckId}/${foundCard}`)
+    //         console.log(response.data)
+    //         return response.data
+    //     } catch (error){throw error}
+    // }
