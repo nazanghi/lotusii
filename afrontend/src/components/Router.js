@@ -108,11 +108,7 @@ class Router extends Component {
                             path="/decks"
                             component ={(props)=> (
                                 <ViewAllDecks
-                                    wantsCreateDeck={this.state.wantsCreateDeck}
-                                    decks={this.state.currentUser.decks}
-                                    toggleCreateDeck={this.toggleCreateDeck}
-                                    currentUser={this.state.currentUser}
-                                    addDeck={this.addDeck}
+                                    {...props}
                                 />    
                             )}
                         />

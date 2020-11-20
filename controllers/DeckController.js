@@ -9,8 +9,8 @@ const GetAllDecks = async (request, response) => {
         page === '1' ? 0 : Math.floor(parseInt(page) * parseInt(limit))
     .limit(parseInt(limit))
     .skip(offset)
-    const displayDecks = await Deck.find()
-    response.send({results: displayDecks.length, decks})
+    const decks = await Deck.find()
+    response.send({decks})
     } catch (error) {throw error}
 }
 

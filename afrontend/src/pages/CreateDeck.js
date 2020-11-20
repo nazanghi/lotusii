@@ -19,7 +19,7 @@ export default class CreateDeck extends Component {
     handleSubmit= (e) => {
         e.preventDefault()
         try{
-            const deck = await __CreateDeck(
+            const deck = __CreateDeck(
                 this.state,
                 this.props.currentUser._id
                 )

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import DisplayBoard from '../components/DisplayBoard'
-import { __GetCards, __AddCardToDeck } from '../services/CardServices'
-// import style
-import { __GetSingleDeck } from '../services/DeckServices'
+import { __GetCards} from '../services/CardServices'
+//import a style sheet when it's done 
+import {
+     __AddCardToDeck, 
+     __GetDecks, 
+     __GetSingleDeck 
+    } from '../services/DeckServices'
 
 
 export default class BrowseCards extends Component {
@@ -10,7 +14,7 @@ export default class BrowseCards extends Component {
         super()
         this.state = {
         cards: [],
-        chosenDeck: null,
+        chosenDeck: null, 
         currentPage: 1
     }
 }
@@ -51,7 +55,7 @@ export default class BrowseCards extends Component {
                                     //for now this just adds it with the onclick
                                     // onClick={()=> this.props.history.push(`/${decks._id}/${card._id}`)}
                                 >
-                                    <div className="mask flex-col discover">
+                                    <div className="mask flex-col">
                                         <div className="flex-col">
                                             <div className="card-content">
                                                 {/* <img src={card.image_source} alt="dummy card using faker" className="dummy-mtg" /> */}
