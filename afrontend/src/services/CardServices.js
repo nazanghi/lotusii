@@ -18,3 +18,5 @@ export const __GetSingleCard = async (cardId) => {
         return response.data
     } catch (error) {throw error}
 }
+
+

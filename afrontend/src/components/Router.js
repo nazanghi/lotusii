@@ -6,7 +6,8 @@ import SignInUser from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import {__CheckSession, __GetProfile } from '../services/UserServices'
 import {__GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckServices'
-
+import LandingPage from '../pages/LandingPage'
+import Home from '../pages/Home'
 
 class Router extends Component {
     constructor (){
@@ -103,4 +104,4 @@ class Router extends Component {
     }
 }
 
-export default Router
+export default withRouter(Router)

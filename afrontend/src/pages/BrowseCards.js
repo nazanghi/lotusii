@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Card from '../components/Card'
+import DisplayBoard from '../components/DisplayBoard'
 import { __GetCards, __AddCardToDeck } from '../services/CardServices'
-// import '../styles/Discover.css'
+// import style
 import { __GetSingleDeck } from '../services/DeckServices'
 
 
-export default class Discover extends Component {
+export default class BrowseCards extends Component {
     constructor () {
         super()
         this.state = {
@@ -27,11 +27,6 @@ export default class Discover extends Component {
     }
     
 
-    addCardToDeck = async (card) => {
-        try {
-            this.props.history.push(card)            
-        } catch (error){throw error}
-    }
     incrementPage = () =>
         this.setState(
             (prevstate) => ({ currentPage: prevstate.currentPage ++ }),
@@ -43,12 +38,13 @@ export default class Discover extends Component {
     render() {
         const { cards } = this.state
         return (
-            <div className="discover wrapper">
+            <div className="wrapper">
+                {/* this had a Discover */}
                 <h2>View All Cards</h2>
                 <section className="content-wrapper">
                     {
                             cards.map((card)=> (
-                                <Card
+                                <DisplayBoard
                                     key={card._id}
                                     //I want the onClick to pop the card up, and then
                                         //provide option to add to a deck
@@ -60,7 +56,7 @@ export default class Discover extends Component {
                                             <div className="card-content">
                                                 {/* <img src={card.image_source} alt="dummy card using faker" className="dummy-mtg" /> */}
                                                 <h3>{card.title}</h3>
-                                                {/* <p>{card.rules_text}</p> */}
+                                                
                                                 <button
                                                     onClick={()=>this.addCardToDeck(card)}
                                                     >Add to Selected Deck</button>
@@ -68,7 +64,7 @@ export default class Discover extends Component {
                                         </div>
                                     </div>
                                     
-                                </Card>
+                                </DisplayBoard>
                                
                             ))
                         //this is really more for when filter functionality is incorporated

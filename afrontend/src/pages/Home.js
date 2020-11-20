@@ -1,6 +1,6 @@
 //Gotta make this
 
-import React from ' React'
+import React from 'react'
 import Search from '../components/TextInput'
 
 export default () => {
@@ -18,7 +18,7 @@ export default () => {
                     {/* this div HAD a className of discover, but we're changing things up */}
                     <p> who doesn't love a good comeback?</p>
                     <section className="card-wrapper flex-row">
-                        
+
                     </section>
                 </div>
             </div>

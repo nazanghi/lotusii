@@ -52,3 +52,5 @@ export const __CreateDeck = async (formData, userId) => {
         return response.data
     } catch (error){throw error}
 }
+
+// export const __AddCardToDeck = async (MTGCardId, deckId)
