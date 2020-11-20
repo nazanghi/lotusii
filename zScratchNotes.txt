@@ -134,10 +134,10 @@ FRONTEND--->everything in SRC
 
 
 
-++++REVIEW PLACEHOLDER++++
 
 
-        MTGCardServices.js /\FILL OUT/\
+
+        MTGCardServices.js /\DONE/\
             __GetAllCards (page, limit)
                 similar to __GetAllDecks
                 .get(`/mtgcards?page=${page||1}&${limit || 50}`)
@@ -148,7 +148,7 @@ FRONTEND--->everything in SRC
             
 
 
-        UserServices.js /\UNCHANGED/\
+        UserServices.js /\DONE/\
             __GetProfile
                 takes in (userId) as a parameter
                 .get(`users/${userId})
@@ -166,7 +166,7 @@ FRONTEND--->everything in SRC
             
 
     in COMPONENTS
-        Router.js
+        Router.js /\BOSSBATTLE/\
             The grandaddy
             this shit is gonna be loaded 
             I gotta set state for everything to be a detail
@@ -180,21 +180,21 @@ FRONTEND--->everything in SRC
                 })
             }
 
-        Hero.js /\UNCHANGED/\
+        Hero.js /\DONE/\
             super simple, it's just my welcome shit
                 can make it a ternary for when a user is logged in
                     authenticated ? () : ()
 
-        Nav.js
+        Nav.js /\DONE/\
             just my nav bar
             would be nice if it had a deck selector here
                 refer to stocks lab
                     *stonks lab
 
-        TextInput /\UNCHANGED/\
+        TextInput /\DONE/\
             super simple, just have this to use for forms and search
 
-        DisplayBoard /\UNCHANGED/\
+        DisplayBoard /\DONE/\
             Yeah this is the Card.js from th other one 
                 renamed for clarity's sake 
 
