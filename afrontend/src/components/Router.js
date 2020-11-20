@@ -8,6 +8,7 @@ import {__CheckSession, __GetProfile } from '../services/UserServices'
 import {__GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckServices'
 import LandingPage from '../pages/LandingPage'
 import Home from '../pages/Home'
+import ViewAllDecks from '../pages/ViewAllDecks'
 
 class Router extends Component {
     constructor (){
@@ -15,7 +16,8 @@ class Router extends Component {
         this.state = {
             authenticated: false,
             currentUser: null,
-            pageLoading: true
+            pageLoading: true,
+            wantsCreateDeck: false
         }
     }
 
@@ -75,6 +77,8 @@ class Router extends Component {
                                     </LandingPage>
                                 )}
                             />
+
+{/*vvvvvvvvvvvvvvvvvvvvv     USER ROUTES    vvvvvvvvvvvvvvvvvvvv*/}
                         <Route
                             exact path = "/register"
                             component = {(props)=> (
@@ -96,6 +100,24 @@ class Router extends Component {
                                 </LandingPage>
                             )}
                         />
+{/*^^^^^^^^^^^^^^^^^^^^     USER ROUTES    ^^^^^^^^^^^^^^^^^^^^^^^  */}
+
+{/* vvvvvvvvvvvvvvvvvv      DECK ROUTES    vvvvvvvvvvvvvvvvvvvvvvvv */}
+                        <Route 
+                            path="/decks"
+                            component ={(props)=> (
+                                <ViewAllDecks
+                                    wantsCreateDeck={this.state.wantsCreateDeck}
+                                    decks={this.state.currentUser.decks}
+                                    toggleCreateDeck={this.toggleCreateDeck}
+                                    currentUser={this.state.currentUser}
+                                    addDeck={this.addDeck}
+                                />    
+                            )}
+                        />
+
+
+
                         </Switch>
                     )}
                 </main>

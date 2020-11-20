@@ -10,6 +10,3 @@ Router.put('/:deck_id/:card_id', DeckController.AddCardToDeck)
 Router.delete('/:deck_id/:card_id', DeckController.RemoveCardFromDeck)
 
 module.exports = Router
-
-//need to add routes for StoreCardInDeck
-                    //   RemoveCardFromDeck

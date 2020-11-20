@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const connection = mongoose.connect(
     process.env.NODE_ENV === 'production'
     ? process.env.DATABASE_URL
-    : 'mongodb://localhost:27017/mtg-lotus', 
+    : 'mongodb://localhost:27017/LotusMkII', 
     {
     useNewUrlParser: true,
     useFindAndModify: true,
