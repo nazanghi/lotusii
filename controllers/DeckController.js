@@ -1,5 +1,4 @@
-//Review This one 
-//CANNIBALIZE CODE FROM MTGCARDCONTROLLER
+//DONE
 const express = require('express')
 const {Deck, MTGCard, User} = require('../database/schema')
 
@@ -30,26 +29,16 @@ const CreateDeck = async(request, response) => {
     deck.save()
     await User.findByIdAndUpdate(
         request.params.user_id, 
-            { $push: {decks: deck}
+            { $push: {
+                decks: deck
+            }
         }
     )
     //user_id .decks.push(deck)
     response.send(deck)
 }
 
-const RenameDeck = async (request, response) => {
-    await Deck.findByIdAndUpdate(
-        request.params.deck_id,
-        {
-            ...request.body
-        },
-        {new: true, useFindAndModify: false},
-        (error, (title)=> (error ? error : response.send(title))
-        )
-    )
-}
-
-const ChangeDescription = async (request, response) => {
+const UpdateDeckInfo = async (request, response) => {
     await Deck.findByIdAndUpdate(
         request.params.deck_id,
         {
@@ -61,9 +50,37 @@ const ChangeDescription = async (request, response) => {
 }
 
 const DeleteDeck = async (request, response) => {
-    await MTGCard.deleteMany({ _id: {$in: deck.cards}})
+    await MTGCard.deleteMany({ _id: {$in: deck.mtgcard_ids}})
     await Deck.findByIdAndDelete(request.params.deck_id)
     response.send({message: `Deck Deleted`})
+}
+
+const AddCardToDeck = async (request, response) => {
+    const newCard = await MTGCard.findById(request.params.mtgcard_id)
+    await Deck.findByIdAndUpdate(
+        { _id: request.params.deck_id},
+        {
+            $push: {
+                MTGCardIds: newCard
+            }
+        }
+    )
+    response.send({_id: request.params.deck_id})
+}
+
+const RemoveCardFromDeck = async (request, response) => {
+    await MTGCard.deleteOne({id: request.params.mtgcard_id})
+    const upDatedDeck = await Deck.findByIdAndUpdate(
+        request.params.deck_id,
+        {
+            $pull:{
+                MTGCardIds: {
+                    _id: request.params.mtgcard_id
+                }
+            }
+        },
+        { upsert: true, new: true}
+    )      
 }
 
 //need to make ShuffleDeck
@@ -71,8 +88,9 @@ const DeleteDeck = async (request, response) => {
 module.exports ={
     GetDeck,
     CreateDeck,
-    RenameDeck,
-    ChangeDescription,
+    UpdateDeckInfo,
     DeleteDeck,
-    GetAllDecks
+    GetAllDecks,
+    AddCardToDeck,
+    RemoveCardFromDeck
 }

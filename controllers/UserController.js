@@ -1,14 +1,13 @@
 //Review 
-
-const { User, Cart } = require('../database/schema')
+//create checkSession
+const { User } = require('../database/schema')
 const { generatePassword, checkPassword } = require('../middleware/PasswordHandler')
 const jwt = require('jsonwebtoken')
 
 const GetProfile = async(request, response) => {
     try {
         const user = await User.findById(request.params.user_id).populate('decks')
-        const cart = await Cart.find({ user_id: request.params.user_id })
-        response.send ({ user, cart})
+        response.send ({ user})
     } catch (error) {
         throw error
     }
@@ -70,5 +69,3 @@ module.exports = {
     SignInUser,
     RefreshSession
 }
-
-//create a checkSession

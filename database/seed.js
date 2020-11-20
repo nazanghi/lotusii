@@ -1,6 +1,4 @@
 // NEED TO BE UPDATED AND FIXED
-    //INSTALL FAKER
-    //INSTALL BCRYPT
 
 const faker = require('faker')
 const connection = require('./connection')
