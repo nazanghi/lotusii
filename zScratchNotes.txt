@@ -67,7 +67,7 @@ BACKEND
                 .put (StoreCard?)---> need that for GetSingleCard
                 .delete (RemoveCardFromDeck)
 
-        MTGCardRouter.js /\TODO/\
+        MTGCardRouter.js /\DONE/\
             all routes for card functions
                 GetSingleCard
                 GetAllCards
@@ -225,7 +225,7 @@ FRONTEND--->everything in SRC
     in STYLES
         each of my .css sheets to then import to the relevant pages
 
-    App.js
+    App.js /\DONE/\
         JUST FIRE THAT SUCKAH OFF
 
     index.js
@@ -257,3 +257,33 @@ response.data.image_uris.large
 forEach(response.data.legalities.standard ==="legal")=> (
 
 )
+
+
+LIST OF FILES TO MAKE/EDIT
+
+    CONTROLLERS
+        DeckController.js
+
+    ROUTERS 
+        DeckRouter.js
+    
+    SERVICES
+        DeckServices.js
+
+FRONTEND FILES TO FINISH
+    
+    COMPONENTS
+        Router.js
+            this will be done as I go along
+    
+    PAGES
+        ViewAllDecks
+        ViewDeckContents
+        BrowseCards
+        Home
+        
+
+    STYLES
+        all of them really
+
+    

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../components/Card'
 import { __GetCards, __AddCardToDeck } from '../services/CardServices'
-import '../styles/Discover.css'
+// import '../styles/Discover.css'
 import { __GetSingleDeck } from '../services/DeckServices'
 
 

@@ -10,6 +10,5 @@ Router.delete('/:deck_id', DeckController.DeleteDeck)
 
 module.exports = Router
 
-//ShuffleDeck will be a get function
-
-//Review
+//need to add routes for StoreCardInDeck
+                    //   RemoveCardFromDeck
