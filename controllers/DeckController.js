@@ -83,14 +83,12 @@ const RemoveCardFromDeck = async (request, response) => {
     )      
 }
 
-//need to make ShuffleDeck
-
 module.exports ={
+    GetAllDecks,
     GetDeck,
     CreateDeck,
     UpdateDeckInfo,
     DeleteDeck,
-    GetAllDecks,
     AddCardToDeck,
     RemoveCardFromDeck
 }

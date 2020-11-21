@@ -45,7 +45,7 @@ Client goes to
 
 
 Last Reviewed:
-4:30PM 11/16
+12:30AM 11/17
 
 .-. .-')     ('-.               .-. .-')     ('-.       .-') _  _ .-') _   
 \  ( OO )   ( OO ).-.           \  ( OO )  _(  OO)     ( OO ) )( (  OO) )  
@@ -72,116 +72,18 @@ Last Reviewed:
         DeckController.js /\ERROR/\
             __AddCardToDeck
             __RemoveCardFromDeck
-
-        MTGCardController.js /\DONE/\
-
-        UserController.js /\DONE/\
-
-  _____        _        _                    
- |  __ \      | |      | |                   
- | |  | | __ _| |_ __ _| |__   __ _ ___  ___ 
- | |  | |/ _` | __/ _` | '_ \ / _` / __|/ _ \
- | |__| | (_| | || (_| | |_) | (_| \__ \  __/
- |_____/ \__,_|\__\__,_|_.__/ \__,_|___/\___|
-                                             
-                                             
-        connection.js /\DONE/\
-
-        schema.js /\DONE/\
-        
-        seed.js /\DONE/\
-            my seed might not be required, but could be useful in testing stuff out
-
-        
-        
-        
+ 
                                  _      _     
                                 | |    | |    
              _ __ ___   ___   __| | ___| |___ 
             | '_ ` _ \ / _ \ / _` |/ _ \ / __|
             | | | | | | (_) | (_| |  __/ \__ \
             |_| |_| |_|\___/ \__,_|\___|_|___/
-                                            
-                                            
-        /\DONE/\
-            Deck.js /\DONE/\
-                has a required name
-                has an unrequired description
-                has MTGCardIds-
-                    type: Schema.Types.ObjectId,
-                    ref 'MTGCard'
 
-
-            MTGCard.js /\DONE/\
+            MTGCard.js /\STRETCH/\
                 has a required title
                 has a required image source
-
-            User.js /\DONE/\
-                has a required name
-                has a required, unique, indexed email
-                has a required password_digest
-                has an unrequired decks array
-                        of arrays of MTG Card MTGCardIds
-                    type: Schema.Types.ObjectId,
-                    ref: 'decks'
-
-
-  __  __ _     _     _ _                             
- |  \/  (_)   | |   | | |                            
- | \  / |_  __| | __| | | _____      ____ _ _ __ ___ 
- | |\/| | |/ _` |/ _` | |/ _ \ \ /\ / / _` | '__/ _ \
- | |  | | | (_| | (_| | |  __/\ V  V / (_| | | |  __/
- |_|  |_|_|\__,_|\__,_|_|\___| \_/\_/ \__,_|_|  \___|
-                                                     
-                                                     
-
-    in MIDDLEWARE /\DONE/\
-        JwtHandler.js /\DONE/\
-        
-        PasswordHandler.js /\DONE/\
-
-
-
-  _____             _            
- |  __ \           | |           
- | |__) |___  _   _| |_ ___  ___ 
- |  _  // _ \| | | | __/ _ \/ __|
- | | \ \ (_) | |_| | ||  __/\__ \
- |_|  \_\___/ \__,_|\__\___||___/
-                                 
-                                 
-    
-        AppRouter.js /\DONE/\
-            this is the first point of contact to the backend
-            it requires all of the other routers to be strung up
-
-        *DeckRouter.js /\TODO/\
-            this is where I put each of the routes for each function into the controller
-                .get GetAllDecks
-                .get GetSingleDeck
-                .post CreateDeck
-                .put UpdateDeck //names and description
-                .delete DeleteDeck
-                .put (StoreCard?)---> need that for GetSingleCard
-                .delete (RemoveCardFromDeck)
-
-        MTGCardRouter.js /\DONE/\
-            all routes for card functions
-                GetSingleCard
-                GetAllCards
-                
-                
-
-        UserRouter.js /\DONE/\
-            all routes for user functions
-                .get GetProfile
-                .post CreateUser
-                .post SignInUser (with createToken)
-            All of the token MIDDLEWARE
-            
-    server.js /\DONE/\
-        This is where we get all of our stuff working
-
+                Stretch goal is to build this model out for an Advanced Search page
 
 
 
@@ -203,18 +105,9 @@ Last Reviewed:
   \___ \ / _ \ '__\ \ / / |/ __/ _ \/ __|
   ____) |  __/ |   \ V /| | (_|  __/\__ \
  |_____/ \___|_|    \_/ |_|\___\___||___/
-                                         
-                                         
-        all of my __Services 
-
-        ApiClient.js /\DONE/\
-            explains to the backend what to get
-                including token
 
         DeckServices.js /\TODO/\
-                +__StoreCardInDeck
-                +__RemoveCardFromDeck
-
+           
             __DeleteDeck (deckId)
                 .delete(`/decks/${deckId}?active=true`)
                     call it in a button
@@ -224,9 +117,6 @@ Last Reviewed:
                 .put(`/decks/${deckId}?active=true`, formData)
                     call it in a button
 
-            __CreateDeck (formData, userId) /\UNCHANGED/\
-                .post(`/decks/${userId}/?active=true`, formData)
-            
             __StoreCardInDeck (cardId) /\BOSSBATTLE/\
                 this is a tricky one
                     I need to ~.get~ the cardId from the ApiClient
@@ -236,52 +126,19 @@ Last Reviewed:
                 .put(`/decks/${deckId}/${selectedCard})
                         I can store deckId in state with a dropdown
 
-
-            __GetAllDecks (page, limit)
-                .get(`/decks?page=${page || 1}&limit=${limit || 10}`)
-
-            __GetSingleDeck (deckId)
-                .get(`/decks/${deckId}`)
-
             __DisplayDeckContents (deckId, userId)
                 .get(`/decks/${deckId}/${userId})
                 and then loop through the array there (.map()) and pop em all in Cards
 
 
 
-
-
-
-        MTGCardServices.js /\DONE/\
-            __GetAllCards (page, limit)
-                similar to __GetAllDecks
-                .get(`/mtgcards?page=${page||1}&${limit || 50}`)
+        MTGCardServices.js /\STRETCH/\
                     -need to link this with the API somehow
-            __GetSingleCard
-
-            
-            
 
 
-        UserServices.js /\DONE/\
-            __GetProfile
-                takes in (userId) as a parameter
-                .get(`users/${userId})
-            __RegisterUser
-                takes in (formData) as a parameter
-                .post(`/users/register`, formData)
-            __CheckSession
-                no parameter
-                .get(`users/refresh/session`)
-            __LoginUser
-                takes in (userData) as a parameter
-                .post(`/users/login`, userData)
-                sets a token for localStorage
-            
-            
-
+COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS
     in COMPONENTS
-        Router.js /\BOSSBATTLE/\
+        Router.js /\TODO/\
             The grandaddy
             this shit is gonna be loaded 
             I gotta set state for everything to be a detail
@@ -295,49 +152,31 @@ Last Reviewed:
                 })
             }
 
-        Hero.js /\DONE/\
+        Hero.js /\STRETCH/\
             super simple, it's just my welcome shit
                 can make it a ternary for when a user is logged in
                     authenticated ? () : ()
 
-        Nav.js /\DONE/\
-            just my nav bar
-            would be nice if it had a deck selector here
+        Nav.js /\STRETCH/\
+            Stretch goal-- would be nice if it had a deck selector here
                 refer to stocks lab
                     *stonks lab
 
-        TextInput /\DONE/\
-            super simple, just have this to use for forms and search
-
-        DisplayBoard /\DONE/\
-            Yeah this is the Card.js from th other one 
-                renamed for clarity's sake 
-
     in PAGES (pages are also components)
     All pages get a NavBar
-        LandingPage /\UNCHANGED/\
-            opening number
-            gonna have the Hero.js
-        Home /\MOSTLY UNCHANGED/\
+        Home /\STRETCH/\
             The basic place where a user lands
                 not necessary, but could be good
                 Honestly could just be some basic bullshit about the project
                 and nothing else 
-        SignUp /\UNCHANGED/\
-            clone it from Lotus1
-        SignIn /\UNCHANGED/\
-            clone it from Lotus1
-        ViewAllDecks /\FIX/\
+        ViewAllDecks /\TODO/\
+            gotta fix this
             Needs to be able to also map through a user's decks and display them
-        CreateDeck /\UNCHANGED/\
-            clone it from Lotus1
-        ViewDeckContents 
-            similar to ViewAllCards but limit it to a deck
-        BrowseCards
-            .map() through array of cards and display the image in a DisplayBoard, in a div
-        
 
-    in STYLES
+        ViewDeckContents /\TODO/\
+            similar to ViewAllCards but limit it to a deck
+        
+    in STYLES /\TODO/\
         each of my .css sheets to then import to the relevant pages
 
     App.js /\DONE/\
@@ -399,3 +238,25 @@ FRONTEND FILES TO FINISH
     ERRORS:
         DeckController 
             getAllDecks, decks is not defined 
+
+
+
+TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST 
+
+PRIORITY ONE 
+    resolve DeckController error
+    resolve Create Deck issues
+    Update Deck Info 
+    Remove Deck
+    Format CSS
+
+When these are done, do the weekend homework
+
+PRIORITY TWO
+    Add Card To Deck
+    Remove Card From Deck
+    Third Party Api
+
+STYLE ON EM
+    Build Out Card Model to accept Parameters from API
+    Advanced Search Page
