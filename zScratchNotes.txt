@@ -30,7 +30,19 @@
   `---`                                                                                                                                                                
                                                                                                                                                                        
                           
-                                                                                                                                                                                                                       
+
+
+
+Client goes to 
+            pages which call services
+                            like __GetCards, __CreateDeck, etc, which go to
+                                                                    The ApiClient
+                                                    which uses AppRouter
+                                        and the individual routers
+                            for functions
+                That talk to MongoDB
+                    
+
 
 Last Reviewed:
 4:30PM 11/16
@@ -114,12 +126,31 @@ Last Reviewed:
                     ref: 'decks'
 
 
+  __  __ _     _     _ _                             
+ |  \/  (_)   | |   | | |                            
+ | \  / |_  __| | __| | | _____      ____ _ _ __ ___ 
+ | |\/| | |/ _` |/ _` | |/ _ \ \ /\ / / _` | '__/ _ \
+ | |  | | | (_| | (_| | |  __/\ V  V / (_| | | |  __/
+ |_|  |_|_|\__,_|\__,_|_|\___| \_/\_/ \__,_|_|  \___|
+                                                     
+                                                     
+
     in MIDDLEWARE /\DONE/\
         JwtHandler.js /\DONE/\
         
         PasswordHandler.js /\DONE/\
 
-    in ROUTES
+
+
+  _____             _            
+ |  __ \           | |           
+ | |__) |___  _   _| |_ ___  ___ 
+ |  _  // _ \| | | | __/ _ \/ __|
+ | | \ \ (_) | |_| | ||  __/\__ \
+ |_|  \_\___/ \__,_|\__\___||___/
+                                 
+                                 
+    
         AppRouter.js /\DONE/\
             this is the first point of contact to the backend
             it requires all of the other routers to be strung up
@@ -154,9 +185,26 @@ Last Reviewed:
 
 
 
-FRONTEND--->everything in SRC 
+              (`-')            <-. (`-')_ (`-')      (`-')  _<-. (`-')_  _(`-')    
+   <-.     <-.(OO )      .->      \( OO) )( OO).->   ( OO).-/   \( OO) )( (OO ).-> 
+(`-')-----.,------,)(`-')----. ,--./ ,--/ /    '._  (,------.,--./ ,--/  \    .'_  
+(OO|(_\---'|   /`. '( OO).-.  '|   \ |  | |'--...__) |  .---'|   \ |  |  '`'-..__) 
+ / |  '--. |  |_.' |( _) | |  ||  . '|  |)`--.  .--'(|  '--. |  . '|  |) |  |  ' | 
+ \_)  .--' |  .   .' \|  |)|  ||  |\    |    |  |    |  .--' |  |\    |  |  |  / : 
+  `|  |_)  |  |\  \   '  '-'  '|  | \   |    |  |    |  `---.|  | \   |  |  '-'  / 
+   `--'    `--' '--'   `-----' `--'  `--'    `--'    `------'`--'  `--'  `------'  
 
-    in SERVICES
+
+
+
+   _____                 _               
+  / ____|               (_)              
+ | (___   ___ _ ____   ___  ___ ___  ___ 
+  \___ \ / _ \ '__\ \ / / |/ __/ _ \/ __|
+  ____) |  __/ |   \ V /| | (_|  __/\__ \
+ |_____/ \___|_|    \_/ |_|\___\___||___/
+                                         
+                                         
         all of my __Services 
 
         ApiClient.js /\DONE/\

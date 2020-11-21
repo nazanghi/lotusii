@@ -18,7 +18,9 @@ export default class ViewAllDecks extends Component {
 
 //make this method
     addDeck = async () => {
-        try {<CreateDeck/>} catch (error){throw error}
+        try {
+        <CreateDeck/>
+    } catch (error){throw error}
     }
 
     toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
@@ -39,7 +41,7 @@ export default class ViewAllDecks extends Component {
             <div className= "wrapper">
                 <h2>View Your Decks</h2>
                 <section className="content-wrapper">
-                    <button onClick={()=>this.addDeck()}>Make a Deck</button>
+                    <button onClick={()=>this.toggleCreateDeck}>Make a Deck</button>
                     {
                         decks.map((deck) => (
                             <DisplayBoard
