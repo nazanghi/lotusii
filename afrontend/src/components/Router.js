@@ -18,7 +18,8 @@ class Router extends Component {
             authenticated: false,
             currentUser: null,
             pageLoading: true,
-            wantsCreateDeck: false
+            wantsCreateDeck: false,
+            decks: []
         }
     }
 

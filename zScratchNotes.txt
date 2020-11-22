@@ -46,8 +46,7 @@ Client goes to
 TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST 
 
 PRIORITY ONE 
-    resolve Create Deck issues
-*-->   ErrMsg: this.props.addDeck is not a function
+    Get Decks to Display on ViewAllDecks
     Update Deck Info
         MVP for CRUD requirements 
     Remove Deck

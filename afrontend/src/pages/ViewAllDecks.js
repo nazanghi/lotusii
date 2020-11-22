@@ -14,8 +14,10 @@ const ViewAllDecks = (props) => {
         <div>
             {props.wantsCreateDeck ?
                 <CreateDeck
+                    addDeck={props.addDeck}
                     toggleCreateDeck={props.toggleCreateDeck}
                     currentUser={props.currentUser}
+
             />
             : null }
         </div>
