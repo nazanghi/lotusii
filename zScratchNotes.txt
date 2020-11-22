@@ -43,9 +43,45 @@ Client goes to
                 That talk to MongoDB
                     
 
+TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST 
+
+PRIORITY ONE 
+    resolve Create Deck issues
+*-->   ErrMsg: this.props.addDeck is not a function
+    Update Deck Info
+        MVP for CRUD requirements 
+    Remove Deck
+        MVP for CRUD requirements
+    Format CSS
+        MVP for CSS requirements
+
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    When these are done, do the weekend homework
+                                                                    AS TEMPTED AS YOU ARE TO CRANK IT TO 11
+                                                                        do your fuckin homework
+
+PRIORITY TWO
+    Add Card To Deck
+    Remove Card From Deck
+    Third Party Api
+        build out card model to reflect all parameters in the API
+
+STYLE ON EM
+    Advanced Search Page
+    Rotating Card Art accessed from the API
+
+
+
+
+
+
 
 Last Reviewed:
-12:30AM 11/17
+12:30AM 11/18
 
 .-. .-')     ('-.               .-. .-')     ('-.       .-') _  _ .-') _   
 \  ( OO )   ( OO ).-.           \  ( OO )  _(  OO)     ( OO ) )( (  OO) )  
@@ -69,7 +105,7 @@ Last Reviewed:
   \_____\___/|_| |_|\__|_|  \___/|_|_|\___|_|  |___/
                                                     
                                                     
-        DeckController.js /\ERROR/\
+        DeckController.js /\TODO/\
             __AddCardToDeck
             __RemoveCardFromDeck
  
@@ -108,16 +144,16 @@ Last Reviewed:
 
         DeckServices.js /\TODO/\
            
-            __DeleteDeck (deckId)
+            __DeleteDeck (deckId)/\TEST/\
                 .delete(`/decks/${deckId}?active=true`)
                     call it in a button
                     delete the deck from the user as well in a cascade
 
-            __UpdateDeckInfo (formData, deckId)
+            __UpdateDeckInfo (formData, deckId) /\TEST/\
                 .put(`/decks/${deckId}?active=true`, formData)
                     call it in a button
 
-            __StoreCardInDeck (cardId) /\BOSSBATTLE/\
+            __StoreCardInDeck (cardId) /\TEST/\
                 this is a tricky one
                     I need to ~.get~ the cardId from the ApiClient
                     and ~.put~ it in the relevant deckId
@@ -125,12 +161,6 @@ Last Reviewed:
                 const selectedCard = .get(`/mtgcards/${mtgcardId})
                 .put(`/decks/${deckId}/${selectedCard})
                         I can store deckId in state with a dropdown
-
-            __DisplayDeckContents (deckId, userId)
-                .get(`/decks/${deckId}/${userId})
-                and then loop through the array there (.map()) and pop em all in Cards
-
-
 
         MTGCardServices.js /\STRETCH/\
                     -need to link this with the API somehow
@@ -175,21 +205,12 @@ COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COM
 
         ViewDeckContents /\TODO/\
             similar to ViewAllCards but limit it to a deck
+                map through an individual deck and display each card in a DisplayBoard
         
     in STYLES /\TODO/\
         each of my .css sheets to then import to the relevant pages
 
-    App.js /\DONE/\
-        JUST FIRE THAT SUCKAH OFF
-
-    index.js
-        ReactDOM renderfier
-
-
 THE BIG TODOS
-
-    RECREATE Functional Pieces of the Old project
-        tweak small adjustments in nomenclature
 
     FIX
         ViewAllDecks
@@ -215,10 +236,6 @@ forEach(response.data.legalities.standard ==="legal")=> (
 
 LIST OF FILES TO MAKE/EDIT
 
-    
-    SERVICES
-        DeckServices.js
-
 FRONTEND FILES TO FINISH
     
     COMPONENTS
@@ -226,37 +243,11 @@ FRONTEND FILES TO FINISH
             this will be done as I go along
     
     PAGES
-        ViewAllDecks
         ViewDeckContents
-        BrowseCards
-        Home
         
 
     STYLES
         all of them really
 
-    ERRORS:
-        DeckController 
-            getAllDecks, decks is not defined 
 
 
-
-TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST 
-
-PRIORITY ONE 
-    resolve DeckController error
-    resolve Create Deck issues
-    Update Deck Info 
-    Remove Deck
-    Format CSS
-
-When these are done, do the weekend homework
-
-PRIORITY TWO
-    Add Card To Deck
-    Remove Card From Deck
-    Third Party Api
-
-STYLE ON EM
-    Build Out Card Model to accept Parameters from API
-    Advanced Search Page
