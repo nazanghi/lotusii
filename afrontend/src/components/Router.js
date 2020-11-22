@@ -26,7 +26,7 @@ class Router extends Component {
         this.verifyTokenValid()
         this.setState({pageLoading: false})
     }
-
+//AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION
     verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -49,6 +49,24 @@ class Router extends Component {
         }
     }
 
+//AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION
+
+//STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS 
+
+addDeck=(deck)=> {
+    this.setState(prevState=>({
+        decks: [...prevState.decks, deck]
+    }))
+}
+
+
+
+
+//STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS 
+
+//TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES 
+
+
     toggleAuthenticated = (value, user, done) => {
         this.setState ({
             authenticated: value,
@@ -56,6 +74,12 @@ class Router extends Component {
             }, ()=> done()
         )
     }
+
+    toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
+
+
+//TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES 
+
 
     render () {
         return (
@@ -108,10 +132,15 @@ class Router extends Component {
                             path="/decks"
                             component ={(props)=> (
                                 <ViewAllDecks
-                                    {...props}
+                                    currentUser={this.state.currentUser}                                    
+                                    wantsCreateDeck={this.state.wantsCreateDeck}                                    
+                                    toggleCreateDeck={this.toggleCreateDeck}
+                                    addDeck={this.addDeck}                                    
                                 />    
                             )}
                         />
+
+
 {/* ^^^^^^^^^^^^^^^^^       DECK ROUTES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 {/* vvvvvvvvvvvvvvvvvv      CARD ROUTES     vvvvvvvvvvvvvvvvvvvvvvvvv */}
                         <Route

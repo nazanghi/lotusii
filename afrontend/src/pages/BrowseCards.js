@@ -62,7 +62,11 @@ export default class BrowseCards extends Component {
                                                 <h3>{card.title}</h3>
                                                 
                                                 <button
-                                                    onClick={()=>this.addCardToDeck(card)}
+                                                    onClick={
+                                                        ()=>this.addCardToDeck(card),
+                                                        console.log(card._id)
+                                                    }
+                                                    
                                                     >Add to Selected Deck</button>
                                             </div> 
                                         </div>

@@ -8,6 +8,7 @@ export default class CreateDeck extends Component {
         this.state = {
             name: '',
             description: '',
+            
         }
     }
 
@@ -16,10 +17,10 @@ export default class CreateDeck extends Component {
         //takes what's typed in whatever's named and puts it as the value of relevant field
     }
     
-    handleSubmit= (e) => {
+    handleSubmit= async (e) => {
         e.preventDefault()
         try{
-            const deck = __CreateDeck(
+            const deck = await __CreateDeck(
                 this.state,
                 this.props.currentUser._id
                 )

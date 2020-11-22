@@ -1,9 +1,3 @@
-//Need to make 
-//      __StoreCardInDeck
-//      __RemoveCardFromDeck
-
-
-
 import ApiClient from './ApiClient'
 
 export const __GetDecks = async (page, limit) => {
@@ -45,6 +39,9 @@ export const __CreateDeck = async (formData, userId) => {
     } catch (error){throw error}
 }
 
+
+
+//newly added and need to test
 export const __AddCardToDeck = async (deckId, cardId) => {
     try {
         const response = await ApiClient.put(`/${deckId}/${cardId}`)
