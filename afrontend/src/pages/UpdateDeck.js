@@ -3,8 +3,8 @@ import TextInput from '../components/TextInput'
 import {__GetSingleDeck, __UpdateDeckInfo} from '../services/DeckServices'
 
 export default class UpdateDeck extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state= {
             name : '',
             description:'',
@@ -18,11 +18,11 @@ export default class UpdateDeck extends Component {
 
     getDeck = async () => {
         try{
-            const deck = await__GetSingleDeck(this.props.match.params.deck_id)
+            const deck = await __GetSingleDeck(this.props.match.params.deck_id)
             this.setState({
                 name: deck.name,
-                description: deck.description,
-                MtgCardIds: [...this.state.MtgCardIds, ...MtgCardIds]
+                description: deck.description
+            
             })
         } catch(error){throw error}
     }

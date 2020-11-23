@@ -58,18 +58,23 @@ export default class BrowseCards extends Component {
 
 
     render() {
-        const { cards, decks } = this.state
+        const { cards, decks, chosenDeck } = this.state
         return (
             <div className="wrapper">
                 {/* this had a Discover className*/}
                 <h2>View All Cards</h2>
-                <select>
-                    {()=>decks.map(()=>this.buildDropdownItem((deck)=>(
-                        <option value={deck._id}>{deck.name}</option>
-                    )))}
-                    <option>Testing</option>
-                </select>
-
+                <section className="deck-viewer">
+                    {
+                        decks.map((deck=>(
+                            <DisplayBoard
+                                key={deck._id}
+                            >
+                                <h3>{deck.name}</h3>
+                                <p>{deck.description}</p>
+                            </DisplayBoard>
+                        )))
+                    }
+                </section>
                 <section className="content-wrapper">
                     {
                             cards.map((card)=> (

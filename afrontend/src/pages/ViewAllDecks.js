@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import DisplayBoard from '../components/DisplayBoard'
 import {__GetDecks } from '../services/DeckServices'
 import CreateDeck from '../pages/CreateDeck'
+
 //import a style once you've made it
 
 
@@ -29,7 +30,7 @@ const ViewAllDecks = (props) => {
                         <div className="card-content">
                             <h3>{deck.name}</h3>
                             <p>{deck.description}</p>
-                            
+                            <button onClick={()=>this.props.history.push(`edit/${deck._id}`)}>edit this shit</button>
                             
                             {/* I need to have an unordered list appear of all of the cards that are in the deck
                             <ul></ul> 

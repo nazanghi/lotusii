@@ -5,11 +5,13 @@ import Nav from './Nav'
 import SignInUser from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import {__CheckSession, __GetProfile } from '../services/UserServices'
-import {__GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckServices'
+import {__DeleteDeck, __GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckServices'
 import LandingPage from '../pages/LandingPage'
 import Home from '../pages/Home'
 import ViewAllDecks from '../pages/ViewAllDecks'
 import BrowseCards from '../pages/BrowseCards'
+import ProtectedRoute from '../components/ProtectedRoute'
+import UpdateDeck from '../pages/UpdateDeck'
 
 class Router extends Component {
     constructor (){
@@ -56,6 +58,9 @@ class Router extends Component {
 //AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION
 
 //STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS 
+
+
+
 
 addDeck=(deck)=> {
     this.setState(prevState=>({
@@ -114,6 +119,7 @@ chooseDeck = async (deck) => {
                 <Nav
                     authenticated={this.state.authenticated}
                     currentUser={this.state.currentUser}
+                    //can maybe put chosenDeck in Nav
                 />
                 <main>
                     {this.state.pageLoading ? (
@@ -168,6 +174,24 @@ chooseDeck = async (deck) => {
                                 />    
                             )}
                         />
+                        <Route
+                            path="/edit/:deck_id"
+                            component={(props)=>(
+                                <UpdateDeck {...props} />
+                            )}
+                        />
+                        {/* <ProtectedRoute
+                            authenticated={this.state.authenticated}
+                            path="/edit/decks"
+                            component ={(props)=> (
+                                <DeckViewer
+                                    currentUser={this.state.currentUser}
+                                    authenticated={this.state.authenticated}
+                                >
+                                    <UpdateDeck {...props} currentUser={this.state.currentUser}/>
+                                </ DeckViewer>
+                            )}
+                        /> */}
 
 
 {/* ^^^^^^^^^^^^^^^^^       DECK ROUTES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
