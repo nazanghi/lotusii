@@ -20,6 +20,7 @@ export const __GetSingleDeck = async (deckId) => {
 export const __DeleteDeck = async (deckId) => {
     try {
         const response = await ApiClient.delete(`/decks/${deckId}?active=true`)
+        console.log(`DeckServices: __DeleteDeck`, response.data)
         return response.data
     } catch (error) {throw error}
 }
@@ -27,7 +28,7 @@ export const __DeleteDeck = async (deckId) => {
 export const __UpdateDeckInfo = async (formData, deckId) => {
     try {
         const response = await ApiClient.put(`/decks/${deckId}?active=true`, formData)
-        console.log(response.data)
+        console.log(`DeckServices: __UpdateDeckInfo`, response.data)
         return response.data
     } catch (error){throw error}
 }
@@ -45,6 +46,7 @@ export const __CreateDeck = async (formData, userId) => {
 export const __AddCardToDeck = async (deckId, cardId) => {
     try {
         const response = await ApiClient.put(`/${deckId}/${cardId}`)
+        console.log(`DeckServices: __AddCardToDeck`, response.data)
         return response.data
     } catch(error){throw error}  
 }
@@ -52,6 +54,8 @@ export const __AddCardToDeck = async (deckId, cardId) => {
 export const __RemoveCardFromDeck = async (deckId, cardId) => {
     try {
         const response = await ApiClient.delete(`/${deckId}/${cardId}`)
+        console.log(`DeckServices: __RemoveCardFromDeck`, response)
+        return response
     } catch(error){throw error}
 }
 
