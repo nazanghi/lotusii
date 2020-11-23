@@ -15,12 +15,21 @@ export default class BrowseCards extends Component {
         this.state = {
         cards: [],
         chosenDeck: null, 
-        currentPage: 1
+        currentPage: 1,
+        decks:[]
     }
 }
 
     componentDidMount() {
         this.getAllCards()
+        
+    }
+
+    getDecks = async () => {
+        try{
+            const decks = await __GetDecks(this.state.decks)
+            this.setState({decks: [...this.state.decks, ...decks]})
+        } catch(error){throw error}
     }
 
     getAllCards = async () => {
@@ -33,18 +42,34 @@ export default class BrowseCards extends Component {
 
     incrementPage = () =>
         this.setState(
-            (prevstate) => ({ currentPage: prevstate.currentPage ++ }),
+            (prevState) => ({ currentPage: prevState.currentPage ++ }),
             () => this.getAllCards()
         )
+
+    buildDropdownItem = () =>{
+        const decks = this.state    
+        this.setState(
+                (prevState) => ({decks: prevState.decks}),
+                ()=> this.getDecks()
+            )
+            return decks
+        }
 
 
 
     render() {
-        const { cards } = this.state
+        const { cards, decks } = this.state
         return (
             <div className="wrapper">
-                {/* this had a Discover */}
+                {/* this had a Discover className*/}
                 <h2>View All Cards</h2>
+                <select>
+                    {()=>decks.map(()=>this.buildDropdownItem((deck)=>(
+                        <option value={deck._id}>{deck.name}</option>
+                    )))}
+                    <option>Testing</option>
+                </select>
+
                 <section className="content-wrapper">
                     {
                             cards.map((card)=> (
@@ -63,8 +88,7 @@ export default class BrowseCards extends Component {
                                                 
                                                 <button
                                                     onClick={
-                                                        ()=>this.addCardToDeck(card),
-                                                        console.log(card._id)
+                                                        ()=>this.props.chosenDeck.AddCardToDeck(card)
                                                     }
                                                     
                                                     >Add to Selected Deck</button>

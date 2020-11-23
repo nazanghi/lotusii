@@ -21,20 +21,39 @@ const ViewAllDecks = (props) => {
             />
             : null }
         </div>
-        {/* <div> */}
-        {/* { */}
-            {/* decks.map((*decks)=> ( */}
-                {/* <DisplayBoard key={deck._id} > */}
-                    {/* <div className="mask flex-col" > */}
-                        {/* <div className="card-content"> */}
-                            {/* <h3>{deck.name}</h3> */}
-                            {/* <p>{deck.description}</p> */}
-                        {/* </div> */}
-                    {/* </div> */}
-                {/* </DisplayBoard> */}
-            {/* )) */}
-        {/* } */}
-        {/* </div> */}
+        <div>
+        {
+            props.decks.map((deck)=> (
+                <DisplayBoard key={deck._id} >
+                    <div className="mask flex-col" >
+                        <div className="card-content">
+                            <h3>{deck.name}</h3>
+                            <p>{deck.description}</p>
+                            
+                            
+                            {/* I need to have an unordered list appear of all of the cards that are in the deck
+                            <ul></ul> 
+                            */}
+                            <div className="mtgcards-display">
+                                {deck.MtgCardIds.length ? (
+                                deck.MtgCardIds.map((mtgcard)=>(
+                                    <li className="individual-mtgcard" key={mtgcard._id}>
+                                        <ul>{mtgcard.title}</ul>
+                                    </li>
+
+                                ))
+
+                                ):(
+                                    <p>No cards in deck</p>
+                                )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </DisplayBoard>
+            ))
+        }
+        </div>
     </div>
     
 }

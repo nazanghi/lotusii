@@ -19,13 +19,15 @@ class Router extends Component {
             currentUser: null,
             pageLoading: true,
             wantsCreateDeck: false,
-            decks: []
+            decks: [],
+            chosenDeck: null
         }
     }
 
     componentDidMount () {
         this.verifyTokenValid()
         this.setState({pageLoading: false})
+        this.getDecks()
     }
 //AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION
     verifyTokenValid = async () => {
@@ -41,6 +43,7 @@ class Router extends Component {
                     },
                     () => this.props.history.push('/')
                 )
+                
             } catch (error) {
                 this.setState({
                     currentUser: null,
@@ -60,8 +63,31 @@ addDeck=(deck)=> {
     }))
 }
 
+getDecks= async (e) =>{
+    try{
+        const userDecks = await __GetDecks()
+        this.setState(
+            {
+                decks: userDecks.decks
+            },
+            () => this.setState(prevState=>({
+                decks: [...prevState.decks]
+            }))
+        )
+    }catch(error){throw error}
+}
 
-
+chooseDeck = async (deck) => {
+    try {
+        const selectedDeck = await __GetSingleDeck(deck._id)
+        this.setState(()=>(
+            {
+                chosenDeck: selectedDeck
+            }
+        ))
+        console.log(this.chosenDeck)
+    } catch (error) {throw error}
+}
 
 //STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS 
 
@@ -136,7 +162,9 @@ addDeck=(deck)=> {
                                     currentUser={this.state.currentUser}                                    
                                     wantsCreateDeck={this.state.wantsCreateDeck}                                    
                                     toggleCreateDeck={this.toggleCreateDeck}
-                                    addDeck={this.addDeck}                                    
+                                    addDeck={this.addDeck}    
+                                    decks={this.state.decks}  
+                                    {...props}                              
                                 />    
                             )}
                         />

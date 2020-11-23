@@ -46,10 +46,10 @@ Client goes to
 TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST TODO LIST 
 
 PRIORITY ONE 
-    Get Decks to Display on ViewAllDecks
-    Update Deck Info
+    
+    Update Deck Info OR AddCardToDeck
         MVP for CRUD requirements 
-    Remove Deck
+    Remove Deck OR RemoveCardFromDeck
         MVP for CRUD requirements
     Format CSS
         MVP for CSS requirements
@@ -64,8 +64,8 @@ PRIORITY ONE
                                                                         do your fuckin homework
 
 PRIORITY TWO
-    Add Card To Deck
-    Remove Card From Deck
+    Add Card To Deck OR UpdateDeckInfo
+    Remove Card From Deck OR RemoveDeck
     Third Party Api
         build out card model to reflect all parameters in the API
 
@@ -250,3 +250,21 @@ FRONTEND FILES TO FINISH
 
 
 
+
+
+Notes/incomplete/testing
+
+
+
+getDecks= async (e) =>{
+    try{
+        const userDecks = await __GetDecks()
+        this.setState(
+            {
+                decks: userDecks.decks
+            },
+            () => this.setState(prevState=>({
+                decks: [...prevState.decks]
+            }))
+        )
+    }catch(error){throw error}
