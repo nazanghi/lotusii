@@ -57,7 +57,7 @@ const DeleteDeck = async (request, response) => {
 
 const AddCardToDeck = async (request, response) => {
     const newCard = await MTGCard.findById(request.params.mtgcard_id)
-    await Deck.findByIdAndUpdate(
+    const updatedDeck = await Deck.findByIdAndUpdate(
         { _id: request.params.deck_id},
         {
             $push: {
@@ -65,7 +65,7 @@ const AddCardToDeck = async (request, response) => {
             }
         }
     )
-    response.send({_id: request.params.deck_id})
+    response.send(updatedDeck)
 }
 
 const RemoveCardFromDeck = async (request, response) => {
@@ -80,7 +80,8 @@ const RemoveCardFromDeck = async (request, response) => {
             }
         },
         { upsert: true, new: true}
-    )      
+        )
+        response.send(updatedDeck)      
 }
 
 module.exports ={

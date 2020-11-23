@@ -30,6 +30,14 @@ const ViewAllDecks = (props) => {
                         <div className="card-content">
                             <h3>{deck.name}</h3>
                             <p>{deck.description}</p>
+                            <button onClick ={()=>props.toggleEditDeck(true)}>edit this shit</button>
+                            <div>{this.props.wantsEditDeck ? 
+                            <UpdateDeck 
+                                toggleEditDeck={props.toggleEditDeck}
+                                currentUser={props.currentUser}
+                            />
+                            : null}
+                            </div>
                             <button onClick={()=>this.props.history.push(`edit/${deck._id}`)}>edit this shit</button>
                             
                             {/* I need to have an unordered list appear of all of the cards that are in the deck

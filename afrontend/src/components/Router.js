@@ -22,7 +22,8 @@ class Router extends Component {
             pageLoading: true,
             wantsCreateDeck: false,
             decks: [],
-            chosenDeck: null
+            chosenDeck: null,
+            wantsEditDeck: false
         }
     }
 
@@ -109,6 +110,8 @@ chooseDeck = async (deck) => {
 
     toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
 
+    toggleEditDeck = (value) => this.setState({wantsEditDeck:value})
+
 
 //TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES TOGGLES 
 
@@ -172,12 +175,6 @@ chooseDeck = async (deck) => {
                                     decks={this.state.decks}  
                                     {...props}                              
                                 />    
-                            )}
-                        />
-                        <Route
-                            path="/edit/:deck_id"
-                            component={(props)=>(
-                                <UpdateDeck {...props} />
                             )}
                         />
                         {/* <ProtectedRoute
