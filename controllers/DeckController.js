@@ -45,7 +45,7 @@ const UpdateDeckInfo = async (request, response) => {
             ...request.body
         },
         {new: true, useFindAndModify: false},
-        (error, (description)=> (error ? error : response.send(description)))
+        (error, (d)=> (error ? error : response.send(d)))
     )
 }
 
