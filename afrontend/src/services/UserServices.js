@@ -12,7 +12,7 @@ export const __GetProfile = async (userId) => {
 export const __RegisterUser = async (formData) => {
     try {
         const response = await ApiClient.post('/users/register', formData)
-        
+        return response.data
     } catch (error) {throw error}
 }
 
