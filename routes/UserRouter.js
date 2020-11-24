@@ -1,5 +1,6 @@
 const Router = require('express').Router()
 const UserController = require('../controllers/UserController')
+const User = require('../database/models/User')
 const {
     getToken,
     createToken,
@@ -7,6 +8,7 @@ const {
 } = require('../middleware/JwtHandler')
 
 Router.get('/:user_id', UserController.GetProfile)
+Router.get('/', UserController.GetAllUsers)
 Router.post('/register', UserController.CreateUser)
 Router.post('/login', UserController.SignInUser, createToken)
 Router.get(

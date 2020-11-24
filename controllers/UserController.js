@@ -12,6 +12,14 @@ const GetProfile = async(request, response) => {
         throw error
     }
 }
+const GetAllUsers = async(request, response) => {
+    try {
+        const users = await User.find(request)
+        response.send ({ users})
+    } catch (error) {
+        throw error
+    }
+}
 
 const CreateUser = async (request, response) => {
     try {
@@ -67,5 +75,6 @@ module.exports = {
     GetProfile,
     CreateUser,
     SignInUser,
-    RefreshSession
+    RefreshSession,
+    GetAllUsers
 }

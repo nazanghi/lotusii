@@ -170,25 +170,27 @@ chooseDeck = async (deck) => {
                                 <ViewAllDecks
                                     currentUser={this.state.currentUser}                                    
                                     wantsCreateDeck={this.state.wantsCreateDeck}                                    
+                                    wantsEditDeck={this.state.wantsEditDeck}
                                     toggleCreateDeck={this.toggleCreateDeck}
                                     addDeck={this.addDeck}    
-                                    decks={this.state.decks}  
+                                    decks={this.state.decks}
+                                    toggleEditDeck={this.toggleEditDeck}  
                                     {...props}                              
                                 />    
                             )}
                         />
-                        {/* <ProtectedRoute
+                        <ProtectedRoute
                             authenticated={this.state.authenticated}
                             path="/edit/decks"
                             component ={(props)=> (
-                                <DeckViewer
+                                <ViewAllDecks
                                     currentUser={this.state.currentUser}
                                     authenticated={this.state.authenticated}
                                 >
                                     <UpdateDeck {...props} currentUser={this.state.currentUser}/>
-                                </ DeckViewer>
+                                </ ViewAllDecks>
                             )}
-                        /> */}
+                        />
 
 
 {/* ^^^^^^^^^^^^^^^^^       DECK ROUTES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}

@@ -4,11 +4,6 @@ const {Deck, MTGCard, User} = require('../database/schema')
 
 const GetAllDecks = async (request, response) => {
     try {
-    const {page, limit } = request.query
-    const offset = 
-        page === '1' ? 0 : Math.floor(parseInt(page) * parseInt(limit))
-    .limit(parseInt(limit))
-    .skip(offset)
     const decks = await Deck.find()
     response.send({decks})
     } catch (error) {throw error}
@@ -26,15 +21,15 @@ const CreateDeck = async(request, response) => {
         name: body.name,
         description: body.description
     })
-    deck.save()
     await User.findByIdAndUpdate(
         request.params.user_id, 
             { $push: {
                 decks: deck
             }
         }
-    )
-    //user_id .decks.push(deck)
+        )
+        deck.save()
+        //user_id .decks.push(deck)
     response.send(deck)
 }
 

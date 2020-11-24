@@ -34,7 +34,7 @@ export default class UpdateDeck extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            await __UpdateDeckInfo(this.state, this.props.match.params.post_id)
+            await __UpdateDeckInfo(this.state, this.props.match.params.deck_id)
             this.props.history.push('/decks')
         }catch(error){throw error}
     }
