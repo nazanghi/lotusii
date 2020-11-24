@@ -1,0 +1,38 @@
+{
+  "name": "LotusMkII",
+  "version": "1.0.0",
+  "description": "Aw shit, here we go again",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "faker": "^5.1.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js", 
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazanghi/lotusii.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazanghi/lotusii/issues"
+  },
+  "homepage": "https://github.com/nazanghi/lotusii#readme"
+}
