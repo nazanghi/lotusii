@@ -28,9 +28,10 @@ class Router extends Component {
     }
 
     componentDidMount () {
+        this.getDecks()
         this.verifyTokenValid()
         this.setState({pageLoading: false})
-        this.getDecks()
+        
     }
 //AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION AUTHENTICATION
     verifyTokenValid = async () => {
@@ -46,7 +47,6 @@ class Router extends Component {
                     },
                     () => this.props.history.push('/')
                 )
-                
             } catch (error) {
                 this.setState({
                     currentUser: null,
@@ -71,15 +71,15 @@ addDeck=(deck)=> {
 
 getDecks= async (e) =>{
     try{
+        console.log('getting decks')
         const userDecks = await __GetDecks()
+        console.log(userDecks.decks)
         this.setState(
             {
                 decks: userDecks.decks
-            },
-            () => this.setState(prevState=>({
-                decks: [...prevState.decks]
-            }))
-        )
+            }
+            )
+        
     }catch(error){throw error}
 }
 
@@ -93,6 +93,15 @@ chooseDeck = async (deck) => {
         ))
         console.log(this.chosenDeck)
     } catch (error) {throw error}
+}
+
+
+deleteDeck = async(id) => {
+    try {
+        const keepTheseDecks = this.state.decks.filter((deck) => deck._id !== id)
+        this.setState({ decks: keepTheseDecks})
+        await __DeleteDeck(id)
+    } catch(error){throw error}
 }
 
 //STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS STATE-MODIFYING-FUNCTIONS 
@@ -174,21 +183,25 @@ chooseDeck = async (deck) => {
                                     toggleCreateDeck={this.toggleCreateDeck}
                                     addDeck={this.addDeck}    
                                     decks={this.state.decks}
-                                    toggleEditDeck={this.toggleEditDeck}  
+                                    toggleEditDeck={this.toggleEditDeck}
+                                    authenticated={this.state.authenticated}  
+                                    deleteDeck={this.deleteDeck}
                                     {...props}                              
                                 />    
                             )}
                         />
                         <ProtectedRoute
                             authenticated={this.state.authenticated}
-                            path="/edit/decks"
+                            path="/edit/:deck_id"
                             component ={(props)=> (
-                                <ViewAllDecks
+                                    <UpdateDeck 
+                                    {...props} 
                                     currentUser={this.state.currentUser}
-                                    authenticated={this.state.authenticated}
-                                >
-                                    <UpdateDeck {...props} currentUser={this.state.currentUser}/>
-                                </ ViewAllDecks>
+                                    toggleEditDeck={this.toggleEditDeck}
+                                    
+                                    
+                                    />
+                                
                             )}
                         />
 

@@ -16,6 +16,6 @@ export default (props) =>
             value = {props.value}
             onChange = {(e) => props.onChange(e)}
             placeholder= {props.placeholder}
-            autocomplete ="false"
+            autoComplete ="false"
         />
     )

@@ -50,7 +50,7 @@ const UpdateDeckInfo = async (request, response) => {
 }
 
 const DeleteDeck = async (request, response) => {
-    await MTGCard.deleteMany({ _id: {$in: deck.mtgcard_ids}})
+    // await MTGCard.deleteMany({ _id: {$in: deck.mtgcard_ids}})
     await Deck.findByIdAndDelete(request.params.deck_id)
     response.send({message: `Deck Deleted`})
 }

@@ -4,12 +4,14 @@ import {__GetDecks } from '../services/DeckServices'
 import CreateDeck from '../pages/CreateDeck'
 import UpdateDeck from '../pages/UpdateDeck'
 
+
 //import a style once you've made it
 
 
 
 
 const ViewAllDecks = (props) => {
+    console.log(props)
     return <div> 
         View Your Decks/Select A Deck to Edit
         <button onClick={()=>props.toggleCreateDeck(true)}>Or Create A New One</button>
@@ -19,6 +21,7 @@ const ViewAllDecks = (props) => {
                     addDeck={props.addDeck}
                     toggleCreateDeck={props.toggleCreateDeck}
                     currentUser={props.currentUser}
+                    toggleEditDeck={props.toggleEditDeck}
 
             />
             : null }
@@ -31,15 +34,16 @@ const ViewAllDecks = (props) => {
                         <div className="card-content">
                             <h3>{deck.name}</h3>
                             <p>{deck.description}</p>
-                            {/* <button onClick ={()=>props.toggleEditDeck(true)}>edit this shit</button> */}
-                            {/* <div>{this.props.wantsEditDeck ? 
+                            {/* <button onClick ={()=>props.toggleEditDeck(true)}>edit this shit</button>
+                            <div>{this.props.wantsEditDeck ? 
                             <UpdateDeck 
                                 toggleEditDeck={props.toggleEditDeck}
                                 currentUser={props.currentUser}
                             />
                             : null}
                             </div> */}
-                            <button onClick={()=>this.props.history.push(`edit/${deck._id}`)}>edit this shieze</button>
+                            <button onClick={()=>props.history.push(`edit/${deck._id}`)}>editttssss</button>
+                            <button onClick={()=>props.deleteDeck(deck._id)}>deletify</button>
                             
                             {/* I need to have an unordered list appear of all of the cards that are in the deck
                             <ul></ul> 

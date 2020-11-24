@@ -28,7 +28,7 @@ export default class UpdateDeck extends Component {
     }
 
     handleChange = ({ target }) => {
-        this.setState({ [target.name]: target.name })
+        this.setState({ [target.name]: target.value })
     }
 
     handleSubmit = async (e) => {

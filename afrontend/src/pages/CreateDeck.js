@@ -7,8 +7,7 @@ export default class CreateDeck extends Component {
         super()
         this.state = {
             name: '',
-            description: '',
-            
+            description: ''
         }
     }
 
@@ -26,6 +25,7 @@ export default class CreateDeck extends Component {
                 )
             this.props.addDeck(deck)
             this.props.toggleCreateDeck(false)
+            this.props.toggleEditDeck(false)
         } catch (error){throw error}
     }
 
