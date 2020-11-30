@@ -3,10 +3,10 @@
 
 import ApiClient from './ApiClient'
 
-export const __GetCards = async (page, limit) => {
+export const __GetCards = async () => {
     try {
         const response = await ApiClient.get(
-            `/mtgcards?page=${page || 1}&${limit || 50 }`
+            `/mtgcards`
         )
         console.log(`CardServices, __GetCards`, response.data)
         return response.data

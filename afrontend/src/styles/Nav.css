@@ -1,0 +1,30 @@
+.icon {
+    opacity: 85%
+}
+
+.nav-active {
+    color: slategray;
+}
+
+header {
+
+}
+
+header nav {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+}
+
+
+header nav a {
+    color: lavenderblush;
+}
+
+header nav a:active,
+header nav a:hover {
+    color: maroon;
+
+}

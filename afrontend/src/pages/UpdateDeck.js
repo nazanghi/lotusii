@@ -8,7 +8,8 @@ export default class UpdateDeck extends Component {
         this.state= {
             name : '',
             description:'',
-            MtgCardIds: []
+            MtgCardIds: [],
+            user_id: this.props.currentUser
         }
     }
 
@@ -18,10 +19,11 @@ export default class UpdateDeck extends Component {
 
     getDeck = async () => {
         try{
-            const deck = await __GetSingleDeck(this.props.match.params.deck_id)
+            const deck = await __GetSingleDeck(this.props.match.params.deck_id, this.props.match.params.user_id)
             this.setState({
                 name: deck.name,
-                description: deck.description
+                description: deck.description,
+                user_id: this.state.currentUser
             
             })
         } catch(error){throw error}

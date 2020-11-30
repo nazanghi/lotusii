@@ -198,7 +198,7 @@ deleteDeck = async(id) => {
                                     {...props} 
                                     currentUser={this.state.currentUser}
                                     toggleEditDeck={this.toggleEditDeck}
-                                    
+                                    decks={this.state.decks}
                                     
                                     />
                                 

@@ -2,3 +2,113 @@ div {
     border: 2px dashed lavender;
     margin: 2px;
 }
+
+
+.flex-row {
+    border: 2px dashed navy;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    border: 2px dashed maroon;
+}
+
+main {
+    height: auto;
+}
+
+form input,
+form textarea {
+    border: none;
+    border-bottom: 1px solid sandybrown;
+    opacity: 90%;
+    padding: 0.7em 0.5em;
+    font-size: 1rem;
+}
+
+input:active,
+input:focus,
+textarea:active,
+textarea:focus{
+    outline: 1px purple;
+    border-color: cornsilk;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.display-board {
+    font-weight: 450;
+    margin: 0.5em 0;
+    background-color: #56308C;
+    border-radius: 1em;
+    box-shadow: 2px peachpuff;
+}
+
+button {
+    background-color: #1b1e59;
+    color: bisque;
+}
+
+
+
+/*
+This is a pool of all of the classnames I've used throughout building this project
+And a pool of some colors I think will be nice
+#1E0126 very dark purple
+#56308C more traditional purple/royal purp
+#1B1E59 purplish navy
+#A63D33 cool brownish red
+#D9BA5F really mellow mustard
+
+
+.display-board{}
+
+.hero-message{}
+
+.hero-action{}
+
+.icon{}
+
+.nav-active{}
+
+.wrapper{}
+
+.deck-viewer{}
+
+.content-wrapper{}
+
+.mask{}
+
+.flex-col{}
+
+.flex-row{}
+
+.card-wrapper{}
+
+.cl-left{}
+
+.cl-right{}
+
+.path-wrapper{}
+
+.image-wrapper{}
+
+.signin{}
+
+.upload{}
+
+.content{}
+
+.card-content{}
+
+.mtgcards-display{}
+
+.individual-mtgcard{} */

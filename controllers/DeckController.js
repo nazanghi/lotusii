@@ -1,6 +1,6 @@
 //DONE
 const express = require('express')
-// const catch = require('../database/connection')
+
 const {Deck, MTGCard, User} = require('../database/schema')
 
 const GetAllDecks = async (request, response) => {
@@ -36,15 +36,16 @@ const CreateDeck = async(request, response) => {
 
 const UpdateDeckInfo = async (request, response) => {
     try { 
+        const deckToUpdate = await Deck.findById(request.params.deck_id)
         await Deck.findByIdAndUpdate(
-        request.params.deck_id,
-        {
-            ...request.body
-        },
-        {new: true, useFindAndModify: false},
-        console.log('DeckInfo', request.params.deck_id),
-        console.log('Deck Body', request.body),
-        response.send(request.body)
+            request.params.deck_id,
+            {
+                ...request.body
+            },
+            {new: true, useFindAndModify: false},
+            console.log('DeckInfo', request.params.deck_id),
+            console.log('Deck Body', request.body),
+        response.send(deckToUpdate)
     ) 
 } catch(error){throw error}
 }

@@ -9,7 +9,7 @@ export default ({children }) => {
             <section className ="left flex-sm flex-col">
                 <div className ="mask flex-col">
                     <div className="content-wrapper flex-row">
-                        <h3 className="logo">aww yee comeback time</h3>
+                        <h3 className="logo"></h3>
                         <div className="hero-wrapper flex-row">
                             <div className="cl-left flex-col">
                                 <Hero/>

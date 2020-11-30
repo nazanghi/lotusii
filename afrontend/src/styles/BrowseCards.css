@@ -1,0 +1,42 @@
+.wrapper {
+    border: 2px dashed blue;
+} 
+.deck-viewer{
+    background-color: navy;
+}
+
+.browse-cards .content-wrapper{
+    width: 85%;
+    margin: 2em auto;
+    display: grid;
+    grid-template-areas: repeat(autofill, 200px);
+    align-items: center;
+    justify-items: center;
+}
+
+.browse-cards .wrapper {
+    margin: 1em auto;
+}
+
+.browse-cards .wrapper .h2 {
+    margin: .5em 1em;
+    padding: 1em;
+    color: yellowgreen;
+    border-bottom: 2px solid lavender;
+}
+
+
+
+
+/* .wrapper h2{}
+.content-wrapper {}
+.content-wrapper button{}
+.display-board .flex-col {}
+
+.browse-cards{}
+.display-board .content-wrapper{}
+
+.card-content h3 {} */
+
+
+ 

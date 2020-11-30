@@ -25,9 +25,9 @@ export const __DeleteDeck = async (deckId) => {
     } catch (error) {throw error}
 }
 
-export const __UpdateDeckInfo = async (formData, deckId, userId) => {
+export const __UpdateDeckInfo = async (formData, deckId) => {
     try {
-        const response = await ApiClient.put(`/decks/${userId}/${deckId}?active=true`, formData)
+        const response = await ApiClient.put(`/decks/${deckId}`, formData)
         console.log(`DeckServices: __UpdateDeckInfo`, response.data)
         return response.data
     } catch (error){throw error}

@@ -60,8 +60,7 @@ export default class BrowseCards extends Component {
     render() {
         const { cards, decks, chosenDeck } = this.state
         return (
-            <div className="wrapper">
-                {/* this had a Discover className*/}
+            <div className="wrapper browse-cards">
                 <h2>View All Cards</h2>
                 <section className="deck-viewer">
                     {
