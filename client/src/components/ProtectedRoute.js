@@ -5,8 +5,8 @@ export default ({ authenticated, children, component: Component, ...rest }) =>
     authenticated === true 
     ?   (
         <Route {...rest} component={Component}>
-            {console.log(authenticated)}
+            {console.log(`components/ProtectedRoute: ${authenticated}`)}
         </Route>
     ) : (
-        <Redirect to="/" />
+        <Redirect to= "/" />
     )

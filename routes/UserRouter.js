@@ -10,7 +10,7 @@ const {
 Router.get('/:user_id', UserController.GetUser)
 Router.get('/', UserController.GetAllUsers)
 Router.post('/register', UserController.CreateUser)
-Router.post('/login', UserController.SignInUser, createToken)
+Router.post('/login', UserController.LoginUser, createToken)
 Router.get(
     '/refresh/session',
     getToken,

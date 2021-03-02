@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-export default ({ authenticated,currentUser, className }) => {
+
+
+export default ({ authenticated, currentUser, className }) => {
     return authenticated 
     ? (
         <header className={className}>

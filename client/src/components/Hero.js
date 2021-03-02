@@ -1,20 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default () => {
+export default  () => {
     return (
-        <div className ="hero flex-col">
-            <div className="hero-message">
+        /**
+         * I'm considering an additional div for an image
+         * cycling cards or something
+         * 
+         */
+        <div className = "hero-layout">
+            <div className = "hero-message">
                 <h1>Lotus</h1>
                 <h3>A Magic The Gathering Deckbuilder</h3>
-                <p>Create a deck, then search for cards to add to them!</p>
             </div>
-            <div className="hero-action">
-                <Link to="/register">Get Started</Link>
+            <div className = "hero-action">
+                <p>Browse Decks</p>
+                {/* Create a deck browsing link */}
+                <p>or</p>
+                <p>Create Your Own</p>
+                {/* Create a sign-in link */}
             </div>
         </div>
     )
 }
-
-
-//Doublechecked, it's good

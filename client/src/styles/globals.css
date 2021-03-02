@@ -44,7 +44,7 @@ textarea::placeholder{
     transition: all 0.3s;
 }
 
-.display-board {
+.card {
     font-weight: 450;
     margin: 0.5em 0;
     background-color: #56308C;
@@ -69,7 +69,7 @@ And a pool of some colors I think will be nice
 #D9BA5F really mellow mustard
 
 
-.display-board{}
+.card{}
 
 .hero-message{}
 
