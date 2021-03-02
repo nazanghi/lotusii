@@ -4,17 +4,21 @@ const { User } = require('../database/schema')
 const { generatePassword, checkPassword } = require('../middleware/PasswordHandler')
 const jwt = require('jsonwebtoken')
 
-const GetProfile = async(request, response) => {
+
+const GetUser = async (request, response) => {
     try {
         const user = await User.findById(request.params.user_id).populate('decks')
-        response.send ({ user})
+        console.log('UserController: GetUser hits')
+        response.send({ user })
     } catch (error) {
+        console.log('UserController: GetUser fails')
         throw error
     }
 }
-const GetAllUsers = async(request, response) => {
+
+const GetAllUsers = async (request, response) => {
     try {
-        const users = await User.find(request)
+        const users = await User.find(request) //do I need request or empty?
         response.send ({ users})
     } catch (error) {
         throw error
@@ -28,36 +32,36 @@ const CreateUser = async (request, response) => {
         const user = new User ({
             name: body.name,
             email: body.email,
+            username: body.username,
             password_digest
         })
         user.save()
+        console.log('UserController: CreateUser hits.')
         response.send(user)
     } catch (error) {
+        console.log('UserController: CreateUser fails')
         throw error
     }
-} 
+}
 
-const SignInUser = async (request, response, next) => {
-    console.log(`SignInUser${request}`)
+const LoginUser = async (request, response, next) => {
+    console.log(`Signing in user id: ${request}`)
     try {
-        const user = await User.findOne({email: request.body.email})
-        console.log('usertest'+user)
-        if (user &&
-            (await (request.body.password, user.password_digest))
-        ) 
-        console.log('works after userController line 38', user)
-        {
+        const user = await User.findOne({ email: request.body.email })
+        if (user && (await (request.body.password, user.password_digest))) {
+            console.log('UserController: LoginUser hits, good pass')
             const payload = {
                 _id: user._id,
-                name: user.name
+                name: user.name,
+                username: user.username
             }
-            console.log('hits payload', payload)
-            response.locals.payload = payload 
-            console.log('hits payload response', response)
+            response.locals.payload = payload
             return next()
         }
-        response.status(401).send({ message: `Wrong Password, try again.`})
+        console.log('UserController: LoginUser hits, bad pass')
+        (response.status(401).send({ message: `Wrong password, try again.`}))
     } catch (error) {
+        console.log('UserController: LoginUser fails')
         throw error
     }
 }
@@ -72,9 +76,9 @@ const RefreshSession = (request, response) => {
 }
 
 module.exports = {
-    GetProfile,
+    GetUser,
     CreateUser,
-    SignInUser,
+    LoginUser,
     RefreshSession,
     GetAllUsers
 }
