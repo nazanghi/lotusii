@@ -1,10 +1,11 @@
 const { model } = require('mongoose')
-const UserModel = require('./models/User')
-const DeckModel = require('./models/Deck')
-const MTGCardModel = require('./models/MTGCard')
+const UserSchema = require('./models/User')
+const DeckSchema = require('./models/Deck')
+const CommentSchema = require('./models/Comment')
 
-const User = model('User', UserModel)
-const Deck = model('Deck', DeckModel)
-const MTGCard = model('MTGCard', MTGCardModel)
+const User = model('users', UserSchema)
+const Deck = model('decks', DeckSchema)
+const Comment = model('comments', CommentSchema)
 
-module.exports = { User, Deck, MTGCard}
+
+module.exports = { User, Deck, Comment }

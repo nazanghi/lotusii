@@ -2,7 +2,7 @@ const { Schema, Types } = require('mongoose')
 
 module.exports = new Schema (
     {
-        name: {
+        title: {
             type: String,
             required: true
         },
@@ -14,9 +14,15 @@ module.exports = new Schema (
             type:Schema.Types.ObjectId,
             ref: "users"
         },
-        MtgCardIds: [{
-            type: Schema.Types.ObjectId,
-            ref: 'MTGCard'
-        }] 
-    }, {timestamps: true}
+        cards: [{
+            type: String
+        }],
+        comments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'comments'
+            }
+        ]
+    }, 
+    { timestamps: true }
 )

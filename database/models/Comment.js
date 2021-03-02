@@ -11,5 +11,5 @@ module.exports = new Schema (
             ref: 'users'
         }
     },
-    {timestamps: true}
+    { timestamps: true }
 )

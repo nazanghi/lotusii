@@ -16,10 +16,16 @@ module.exports = new Schema (
             type: String,
             required: true
         },
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+            index: true
+        },
         decks: [{
             type: Schema.Types.ObjectId,
             ref: 'decks'
         }]
     }, 
-    {timestamps: true}
+    { timestamps: true }
 )
