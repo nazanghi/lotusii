@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import TextInput from '../components/TextInput'
-import {__GetSingleDeck, __UpdateDeckInfo} from '../services/DeckServices'
+import {__GetOneDeck, __UpdateDeckInfo} from '../services/DeckServices'
 
 export default class UpdateDeck extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class UpdateDeck extends Component {
 
     getDeck = async () => {
         try{
-            const deck = await __GetSingleDeck(this.props.match.params.deck_id, this.props.match.params.user_id)
+            const deck = await __GetOneDeck(this.props.match.params.deck_id, this.props.match.params.user_id)
             this.setState({
                 name: deck.name,
                 description: deck.description,

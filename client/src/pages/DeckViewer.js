@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import DisplayBoard from '../components/DisplayBoard'
+import Card from '../components/Card'
 import {
     __DeleteDeck,
-    __GetSingleDeck,
+    __GetOneDeck,
     __RemoveCardFromDeck,
     __AddCardToDeck,
     __GetDecks

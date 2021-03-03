@@ -204,7 +204,7 @@ COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COMPONENTS COM
 
         ViewDeckContents /\TODO/\
             similar to ViewAllCards but limit it to a deck
-                map through an individual deck and display each card in a DisplayBoard
+                map through an individual deck and display each card in a Card
         
     in STYLES /\TODO/\
         each of my .css sheets to then import to the relevant pages

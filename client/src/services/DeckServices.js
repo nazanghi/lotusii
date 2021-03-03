@@ -11,7 +11,7 @@ export const __CreateDeck = async (formData, userId) => {
     }
 }
  
-export const __GetDeck = async (deckId) => {
+export const __GetOneDeck = async (deckId) => {
     try {
         const response = await ApiClient.get(`decks/${deckId}`)
         console.log('DeckServices: __GetDeck hits. Response: ', response)
@@ -22,7 +22,7 @@ export const __GetDeck = async (deckId) => {
     }
 }
  
-export const __GetAllDecks = async (page, limit) => {
+export const __GetDecks = async (page, limit) => {
     try {
         const response = await ApiClient.get(
             `/decks/?page=${ page || 1 }&limit=${ limit || 10 }`

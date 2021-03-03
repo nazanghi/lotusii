@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import TextInput from '../components/TextInput'
-import {__RegisterUser} from '../services/UserServices'
+import {__CreateUser} from '../services/UserServices'
 // import '../styles/Signup.css'
 
 export default class Signup extends Component {
@@ -21,7 +21,7 @@ export default class Signup extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            await __RegisterUser(this.state)
+            await __CreateUser(this.state)
             this.props.history.push('/register')
         } catch (error) {throw error}
     }

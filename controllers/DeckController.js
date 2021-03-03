@@ -72,26 +72,26 @@ const UpdateDeckInfo = async (request, response) => {
 } catch(error){throw error}
 }
 
-const UpdateDeckInfo = async ( request, response) => {
-    try { 
-        await Deck.findByIdAndUpdate(
-        request.params.deck_id,
-        {
-            ...request.body
-        },
-        { new: true, useFindAndModify: false },
-        (error, (description) => (error ? (
-            error, console.log('DeckController, updateDeckInfo error')
-            ) : (
-                console.log('DeckController, UpdateDeckInfo hits'), 
-                response.send(description))
-            ))
-        )
-    } catch (error) {
-        console.log('DeckController, UpdateDeckInfo fails')
-        throw error
-    }
-}
+// const UpdateDeckInfo = async ( request, response) => {
+//     try { 
+//         await Deck.findByIdAndUpdate(
+//         request.params.deck_id,
+//         {
+//             ...request.body
+//         },
+//         { new: true, useFindAndModify: false },
+//         (error, (description) => (error ? (
+//             error, console.log('DeckController, updateDeckInfo error')
+//             ) : (
+//                 console.log('DeckController, UpdateDeckInfo hits'), 
+//                 response.send(description))
+//             ))
+//         )
+//     } catch (error) {
+//         console.log('DeckController, UpdateDeckInfo fails')
+//         throw error
+//     }
+// }
 
 const DeleteDeck = async (request, response) => {
     const deck = findById(request.params.deck_id)

@@ -5,7 +5,7 @@ import Nav from './Nav'
 import SignInUser from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import {__CheckSession, __GetProfile } from '../services/UserServices'
-import {__DeleteDeck, __GetDecks, __GetSingleDeck, __UpdateDeckInfo } from '../services/DeckServices'
+import {__DeleteDeck, __GetDecks, __GetOneDeck, __UpdateDeckInfo } from '../services/DeckServices'
 import LandingPage from '../pages/LandingPage'
 import Home from '../pages/Home'
 import ViewAllDecks from '../pages/ViewAllDecks'
@@ -85,7 +85,7 @@ getDecks= async (e) =>{
 
 chooseDeck = async (deck) => {
     try {
-        const selectedDeck = await __GetSingleDeck(deck._id)
+        const selectedDeck = await __GetOneDeck(deck._id)
         this.setState(()=>(
             {
                 chosenDeck: selectedDeck

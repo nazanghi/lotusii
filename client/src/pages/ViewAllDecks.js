@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DisplayBoard from '../components/DisplayBoard'
+import Card from '../components/Card'
 import {__GetDecks } from '../services/DeckServices'
 import CreateDeck from '../pages/CreateDeck'
 import UpdateDeck from '../pages/UpdateDeck'
@@ -29,7 +29,7 @@ const ViewAllDecks = (props) => {
         <div>
         {
             props.decks.map((deck)=> (
-                <DisplayBoard key={deck._id} >
+                <Card key={deck._id} >
                     <div className="mask flex-col" >
                         <div className="card-content">
                             <h3>{deck.name}</h3>
@@ -64,7 +64,7 @@ const ViewAllDecks = (props) => {
                             </div>
                         </div>
                     </div>
-                </DisplayBoard>
+                </Card>
             ))
         }
         </div>
@@ -155,7 +155,7 @@ export default ViewAllDecks
 //                     </div>
 //                     {
 //                         decks.map((deck) => (
-//                             <DisplayBoard
+//                             <Card
 //                                 key={deck._id}
 //                             >
 //                                 {/* the below div had a class of discover */}
@@ -167,7 +167,7 @@ export default ViewAllDecks
 //                                         </div>
 //                                     </div>
 //                                 </div>
-//                             </DisplayBoard>
+//                             </Card>
 //                         ))
 //                     }
 //                 </section>
